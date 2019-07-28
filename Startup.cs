@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using PieShop.Repositories;
 
 namespace PieShop
 {
@@ -16,6 +17,7 @@ namespace PieShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IPieRepository, PieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

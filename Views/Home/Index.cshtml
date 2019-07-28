@@ -1,0 +1,30 @@
+﻿@using PieShop.ViewModels
+@model HomeViewModel
+
+
+<h2>@Model.Title</h2>
+
+<div class="row">
+    @foreach (var p in Model.Pies)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="@p.ImageThumbnailUrl" alt="@p.Name">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="card-title">@p.Name</h5>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <h5 class="card-title">$ @p.Price.ToString()</h5>
+                        </div>
+                    </div>
+
+                    <p class="card-text">
+                        @p.ShortDescription
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
