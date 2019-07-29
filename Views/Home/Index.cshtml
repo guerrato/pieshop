@@ -1,5 +1,4 @@
-﻿@using PieShop.ViewModels
-@model HomeViewModel
+﻿@model HomeViewModel
 
 
 <h2>@Model.Title</h2>
@@ -13,7 +12,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5 class="card-title">@p.Name</h5>
+                            <h5 class="card-title">
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@p.Id" class="text-right">@p.Name</a>
+                            </h5>
                         </div>
                         <div class="col-md-6 text-right">
                             <h5 class="card-title">$ @p.Price.ToString()</h5>

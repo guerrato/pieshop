@@ -33,5 +33,17 @@ namespace PieShop.Controllers
 
             return View(homeViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            Pie pie = pieRepository.GetById(id);
+
+            if (pie == null)
+            {
+                return NotFound();
+            }
+
+            return View(pie);
+        }
     }
 }
