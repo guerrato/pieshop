@@ -8,10 +8,16 @@ namespace PieShop.Repositories
     public class PieRepository : IPieRepository
     {
         private List<Pie> pies;
+        private bool FromInMemory { get; set; }
 
-        public PieRepository()
+        private readonly AppDbContext dbContext;
+
+        public PieRepository(AppDbContext dbContext, bool fromInMemory = false)
         {
-            if (this.pies == null)
+            this.dbContext = dbContext;
+            FromInMemory = fromInMemory;
+
+            if (this.pies == null && FromInMemory == true)
             {
                 Initialize();
             }
@@ -30,12 +36,22 @@ namespace PieShop.Repositories
 
         public IEnumerable<Pie> GetAll()
         {
-            return this.pies;
+            if (FromInMemory)
+            {
+                return this.pies;
+            }
+
+            return dbContext.Pies;
         }
 
         public Pie GetById(int id)
         {
-            return pies.FirstOrDefault(p => p.Id == id);
+            if (FromInMemory)
+            {
+                return pies.FirstOrDefault(p => p.Id == id);
+            }
+
+            return dbContext.Pies.FirstOrDefault(p => p.Id == id);
         }
     }
 }
