@@ -1,0 +1,34 @@
+﻿@model Feedback
+
+<div class="row">
+    <div class="col-md-12" style="background-color: #fff; padding-top: 1rem;">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+        }
+        <form asp-action="Index" method="post" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input type="text" class="form-control" asp-for="Name" />
+                <small><span asp-validation-for="Name" class="form-text text-danger"></span></small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input type="email" class="form-control" asp-for="Email">
+                <small><span asp-validation-for="Email" class="form-text text-danger"></span></small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message"></label>
+                <textarea asp-for="Message" class="form-control"></textarea>
+                <small><span asp-validation-for="Message" class="form-text text-danger"></span></small>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" asp-for="ContactMe" class="form-check-input" />
+                <label asp-for="ContactMe" class="form-check-label"></label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Send Feedback</button>
+            </div>
+        </form>
+    </div>
+</div>

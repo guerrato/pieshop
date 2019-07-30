@@ -18,6 +18,7 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Feedback\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\lib\jquery\dist\jquery.js" />
